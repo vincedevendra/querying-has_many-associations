@@ -10,10 +10,12 @@ require_relative "factories"
 require_relative "../db/schema"
 
 ActiveRecord::Base.establish_connection(
-  adapter:  "postgresql",
+  adapter:  "mysql2",
   database: "upcase_exercise",
   encoding: "utf8",
-  host: "localhost",
+  host: '127.0.0.1',
+  username: 'root',
+  password: '',
   min_messages: "warning"
 )
 

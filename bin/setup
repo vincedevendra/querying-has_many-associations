@@ -7,7 +7,7 @@
 set -e
 
 # Check for necessary programs
-for program in ruby gem createdb; do
+for program in ruby gem; do
   if ! command -v "$program" > /dev/null; then
     echo "The $program command is required to perform this exercise." 1>&2
     exit 1
@@ -25,8 +25,8 @@ bundle install
 # http://goo.gl/CPzari
 mkdir -p .git/safe
 
-# Create a Postgresql database for exercises
-createdb upcase_exercise 2>/dev/null || true
+# Create a Mysql database for exercises
+echo "create database if not exists upcase_exercise" | mysql -h 127.0.0.1 -u root
 
 # Run tests to print failure messages
 bin/rake
